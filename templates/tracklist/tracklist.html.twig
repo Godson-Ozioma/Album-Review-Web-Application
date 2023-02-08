@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="row justify-content-center">
+    <h5>{{ album.getAlbumName() }}</h5>
+</div>
+{% for listTrack in listTracks %}
+{#{% include 'Reusable Component/reusableCard.html.twig' with {'title': listTracks.getTrackName(), 'content1': listTracks.getAlbum().getAlbumName(), 'content2': '', 'content3': '', 'listReview': listTracks } only %}#}
+    <div class="container">
+        <div class="row ">
+            <div class="col-sm-10 pl-5 pr-5 pb-5">
+                <div class="card-group">
+                    <div class="card border-primary">
+                        {#                        <div class="card" style="max-width: 120rem;">#}
+                        {% block extraTop %} {% endblock %}
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <h5 class="card-title">{{ listTrack.getTrackName() }}</h5>
+                                </div>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <div class="col-sm-2">
+                                        <a class="btn btn-outline-danger" href="tracklist?deleteTrackId={{ listTrack.getId() }}">Delete</a>
+
+                                    </div>
+                                {% endif %}
+
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    {% endfor %}
+{% endblock %}

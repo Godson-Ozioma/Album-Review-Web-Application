@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <li>
+
+        {{ review.getComment() }}
+        {{ review.getRating() }}
+    </li>
+</div>
+
+
+
+{% endblock %}

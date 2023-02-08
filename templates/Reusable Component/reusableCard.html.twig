@@ -1,0 +1,35 @@
+{#{% extends 'base.html.twig' %}#}
+
+{% block body %}
+{#{% set title = entry.title %}#}
+
+{#<div class="container">#}
+
+{#    <h1 class="text-center">About</h1>#}
+{#    <div class="row justify-content-center">#}
+
+
+
+            <div class="col-sm-6 col-lg-4 p-3">
+                <div class="card-group">
+                    <div class="card border-primary">
+{#                        <div class="card" style="max-width: 120rem;">#}
+                            {% block extraTop %} {% endblock %}
+                            <div class="card-body text-center">
+                                <h5 class="card-title">{{ title | capitalize }}</h5>
+                                <p class="card-text">{{ content1 | capitalize }}</p>
+                                <p class="card-text">{{ content2 | capitalize }}</p>
+                                <p class="card-text">{{ content3 | capitalize }}</p>
+
+                                {% block extraBottom %}
+                                {% endblock %}
+                            </div>
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+
+{#    </div>#}
+{#</div>#}
+
+{% endblock %}
