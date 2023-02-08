@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        {% if app.user %}
+
+            <h1>Create Album</h1>
+
+            {{ form(album_form) }}
+
+        {% else%}
+            <p>You need to <a href="login">Login</a> to create an album </p>
+        {% endif %}
+    </div>
+
+{% endblock %}

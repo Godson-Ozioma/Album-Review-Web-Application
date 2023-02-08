@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for listUser in listUsers %}
+        {#{% include 'Reusable Component/reusableCard.html.twig' with {'title': listTracks.getTrackName(), 'content1': listTracks.getAlbum().getAlbumName(), 'content2': '', 'content3': '', 'listReview': listTracks } only %}#}
+        <div class="container">
+            <div class="row ">
+                <div class="col-sm-10 pl-5 pr-5 pb-5">
+                    <div class="card-group">
+                        <div class="card border-primary">
+                            {#                        <div class="card" style="max-width: 120rem;">#}
+                            {% block extraTop %} {% endblock %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5 class="card-title">{{ listUser.getUsername() }}</h5>
+                                    </div>
+
+                                        <div class="col-sm-6">
+                                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                        {% if listUser != app.user %}
+                                            <a class="btn btn-outline-danger" href="allUsers?deleteUserId={{ listUser.getId() }}">Delete</a>
+
+
+                                            <a class="btn btn-outline-primary" href="allUsers?makeAdminId={{ listUser.getId() }}">Make Admin</a>
+
+                                            <a class="btn btn-outline-primary" href="allUsers?makeSuperAdminId={{ listUser.getId() }}">Make Super Admin</a>
+                                    {% endif %}
+                                        {% endif %}
+
+                                        </div>
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{% endblock %}

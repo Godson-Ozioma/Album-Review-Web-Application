@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+
+
+    {#    {% endfor %}#}
+    <div class="container">
+
+    <div class="row hometainer">
+        <div class="row text-center">
+            <div class="col-sm-12">
+                <h1>SAPA</h1>
+
+                <!--                Form to enable a user search for albums-->
+                <form class="form-inline" method="post" action="search">
+                    <div class="form-group">
+                        <input name="searchInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="searchButton" class="btn btn-outline-primary my-2 my-sm-0" type="submit" value="Search"/>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{#    {% for user in user %}#}
+
+
+
+
+{% endblock %}

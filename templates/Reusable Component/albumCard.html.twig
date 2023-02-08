@@ -1,0 +1,59 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block body%}#}
+
+    {#    <a class="btn btn-primary" href='show'>Create Album</a>#}
+{#    <div class="container">#}
+
+{#        <h1 class="text-center">Albums</h1>#}
+{#        <div class="row justify-content-center">#}
+
+{#            {% for listAlbum in listAlbum %}#}
+
+
+
+                {% embed 'Reusable Component/reusableCard.html.twig' with {'title': listAlbum.getAlbumName(), 'content1': 'by', 'content2': listAlbum.getArtist(), 'content3': listAlbum.getGenre(), 'listAlbum': listAlbum } only %}
+
+
+                    {% block extraTop %}
+                        {% if listAlbum.getAlbumPicture() != null %}
+                        <img src="{{ asset('images/' ~ listAlbum.getAlbumPicture()) }}" alt="Picture" class="card-img-top">
+
+                        {% else %}
+                        <img src="{{ asset('images/default.jpg') }}" alt="Picture" class="card-img-top">
+
+
+                        {% endif %}
+
+                    {% endblock %}
+
+
+                    {% block extraBottom %}
+                        {% if app.user %}
+                            <a class="btn btn-outline-primary" href='creator?id={{ listAlbum.getId() }}' >Create Review</a>
+
+                        {% endif %}
+
+
+
+                        <a  class="btn btn-outline-primary" href='reviews?albumId={{ listAlbum.getId() }}'>View Reviews</a>
+                        <a  class="btn btn-outline-primary" href='tracklist?viewTrackId={{ listAlbum.getId() }}'>View Tracks</a>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a  class="btn btn-outline-primary" href='tracking?createTrackId={{ listAlbum.getId() }}'>Add Tracks</a>
+{#                            <a href="tracking" class="btn btn-outline-primary" data-toggle="modal" data-target="#myModal">Open Modal</a>#}
+
+{#                            {% include 'Reusable Component/customModal.html.twig' %}#}
+
+
+
+                        {% endif %}
+                    {% endblock %}
+                {% endembed %}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+
+
+
+{#{% endblock %}#}
+

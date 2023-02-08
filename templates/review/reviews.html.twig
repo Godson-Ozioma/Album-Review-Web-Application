@@ -1,0 +1,37 @@
+{% include 'base.html.twig' %}
+
+{% block body%}
+    <div class="container">
+
+    <h1 class="text-center">Reviews</h1>
+
+
+    <div class="row justify-content-center">
+
+    {% for listReview in listReview %}
+
+
+        {% set comment = 'Comment: ' ~ listReview.getComment()  %}
+        {% embed 'Reusable Component/reusableCard.html.twig' with {'title': listReview.getUser().getUsername(), 'content1': comment, 'content2': '', 'content3': listReview.getRating(), 'listReview': listReview } only %}
+
+            {% block extraBottom %}
+                {% if listReview.getUser() == app.user %}
+                    <a class="btn btn-outline-primary" href="creator?editId={{ listReview.getId() }}&id={{ listReview.getAlbum().getId() }}">Edit</a>
+                {% endif %}
+
+                {% if (is_granted('ROLE_ADMIN')) or (listReview.getUser()) == app.user %}
+                <a class="btn btn-outline-danger" href="reviews?deleteId={{ listReview.getId() }}&albumId={{ listReview.getAlbum().getId() }}">Delete</a>
+                {% endif %}
+
+
+            {% endblock %}
+        {% endembed %}
+    {% endfor %}
+    </div>
+
+
+
+
+
+
+{% endblock %}
