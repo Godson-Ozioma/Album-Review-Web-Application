@@ -20,7 +20,7 @@ class AlbumFormType extends AbstractType
             ->add('genre')
             ->add('image', FileType::class, [
 
-                'label' => 'Album Picture (jpg file)',
+                'label' => 'Project Cover (jpg file)',
 
                 // unmapped means that this field is not associated to any entity property
                 'mapped' => false,

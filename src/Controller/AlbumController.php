@@ -73,7 +73,7 @@ class AlbumController extends AbstractController
 
     }
 
-    #[Route('/albums', name: 'list_album')]
+    #[Route('/albums','list_album')]
     public function listAlbum(ManagerRegistry $doctrine): Response
     {
         $listAlbum = $doctrine->getRepository(Album::class)->findAll();
